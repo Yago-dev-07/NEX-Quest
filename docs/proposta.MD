@@ -1,123 +1,81 @@
-# Proposta Inicial do Jogo
-
-Este documento deve ser preenchido pelo grupo na etapa inicial do projeto.
-
-A proposta deve apresentar uma ideia simples, clara e viável para ser desenvolvida com **Python e Pygame** dentro do prazo disponível. Consulte o enunciado publicado no Canvas para conhecer o eixo temático e as orientações vigentes.
+# Proposta Inicial do Jogo — NEX Quest
 
 ## 1. Nome provisório do jogo
 
-Informe o nome provisório do jogo.
-
-**Nome:**
-
-> Escreva aqui.
+**NEX Quest — A Missão da Inteligência Artificial**
 
 ## 2. Integrantes do grupo
 
-- Nome 1:
-- Nome 2:
-- Nome 3:
-- Nome 4:
+- Yago Teixeira Almeida Nascimento
+- Heitor Dornelas Anacleto
+- Cauã Guilherme
+- Miguel Hayser
 
 ## 3. Tema escolhido
 
-Indique qual tema específico o grupo escolheu **dentro do eixo temático definido no enunciado**.
+**Tema:** Inteligência Artificial no Cotidiano e Uso Responsável.
 
-**Tema:**
-
-> Escreva aqui.
-
-**Como esse tema se relaciona com o jogo?** Explique brevemente (2 a 4 linhas) como ele aparecerá nos objetivos, nas regras ou nos desafios, e não apenas nas imagens ou no cenário.
-
-> Escreva aqui.
+O jogo aborda aplicações da IA no dia a dia, seus benefícios e cuidados necessários, como privacidade, confiabilidade e verificação de informações. Esses assuntos aparecem diretamente nas perguntas e nos desafios que o jogador precisa resolver para avançar.
 
 ## 4. Tipo de jogo
 
-Indique o estilo do jogo. Exemplos: desviar de obstáculos, coleta de itens, labirinto, perguntas e respostas, memória, Pong, Snake, Breakout, corrida ou sobrevivência simples.
-
-**Tipo escolhido:**
-
-> Escreva aqui.
+**Tipo escolhido:** Quiz educativo com perguntas de múltipla escolha, fases e elementos de aventura.
 
 ## 5. Descrição geral do jogo
 
-Explique, em poucas linhas, como o jogo funcionará. O que aparece na tela? O que o jogador controla? O que ele precisa fazer e quais desafios encontrará?
-
-**Descrição:**
-
-> Escreva aqui.
+NEX é um pequeno robô que perdeu parte de suas memórias após uma falha no sistema. O jogador deve ajudá-lo a recuperar seus conhecimentos respondendo a perguntas sobre Inteligência Artificial. A cada etapa, novos desafios são apresentados, com mensagens do personagem e uma interface visual desenvolvida em Python com Pygame.
 
 ## 6. Objetivo do jogador
 
-Descreva o objetivo principal. Por exemplo: coletar itens, sobreviver por determinado tempo, chegar ao final de um percurso ou completar desafios.
-
-**Objetivo:**
-
-> Escreva aqui.
+Recuperar as memórias de NEX, respondendo corretamente aos desafios e concluindo todas as fases do jogo, enquanto aprende sobre IA e seu uso responsável.
 
 ## 7. Regras principais
 
-Liste até cinco regras que expliquem o funcionamento do jogo. Exemplos: o jogador começa com três vidas; acertos somam pontos; colisões retiram vidas.
-
-- Regra 1:
-- Regra 2:
-- Regra 3:
-- Regra 4:
-- Regra 5:
+1. O jogador começa a partida com **três vidas**.
+2. Cada pergunta apresenta **quatro alternativas**, com apenas uma correta.
+3. Respostas corretas aumentam a pontuação e permitem avançar; respostas erradas retiram uma vida.
+4. Acertos consecutivos geram um **bônus simples de pontuação**.
+5. Após cada resposta, o jogo apresenta uma breve explicação educativa, antes da próxima pergunta.
 
 ## 8. Condição de vitória
 
-Explique como o jogador vence ou conclui a partida. Exemplos: alcançar uma pontuação, finalizar uma fase ou completar todas as tarefas.
-
-**Condição de vitória:**
-
-> Escreva aqui.
+O jogador vence ao concluir todas as fases e recuperar as memórias de NEX sem perder todas as vidas.
 
 ## 9. Condição de derrota ou encerramento
 
-Explique quando a partida termina ou como o jogador perde. Exemplos: esgotar as vidas, acabar o tempo ou atingir o limite de erros.
-
-**Condição de derrota ou encerramento:**
-
-> Escreva aqui.
+A partida termina em derrota quando as três vidas são perdidas. Ao final, o jogador pode visualizar sua pontuação e iniciar uma nova tentativa.
 
 ## 10. Elementos previstos no jogo
 
-Descreva brevemente os elementos mais importantes, sem precisar detalhar a implementação.
-
-- **Personagem ou elemento principal:**
-- **Obstáculos ou desafios:**
-- **Itens ou objetos de interação (se houver):**
-- **Pontuação, vidas, tempo ou progresso:**
+- **Personagem ou elemento principal:** NEX, robô que acompanha e orienta o jogador.
+- **Obstáculos ou desafios:** perguntas sobre conceitos, aplicações e uso responsável da IA.
+- **Itens ou objetos de interação:** botões de alternativas e fragmentos de memória representados pelo progresso nas fases.
+- **Pontuação, vidas, tempo ou progresso:** pontos por acerto, bônus por sequência, três vidas e indicador de avanço.
 
 ## 11. Controles previstos
 
-Informe como o jogador vai interagir com o jogo (por exemplo, setas para movimentar, espaço para agir ou mouse para selecionar).
-
-**Controles:**
-
-> Escreva aqui.
+O jogador utilizará o **mouse** para selecionar alternativas e interagir com os botões de iniciar, continuar e jogar novamente.
 
 ## 12. Principais dificuldades esperadas
 
-Cite até três dificuldades que o grupo espera enfrentar. Exemplos: movimentação, colisões, controle de tempo, testes ou uso do GitHub.
-
-- Dificuldade 1:
-- Dificuldade 2:
-- Dificuldade 3:
+1. Criar e organizar as telas e os botões interativos no Pygame.
+2. Controlar perguntas, respostas, vidas, pontuação e transições entre fases.
+3. Integrar os arquivos desenvolvidos pelos integrantes e testar o funcionamento do jogo.
 
 ## 13. Escopo mínimo para a entrega final
 
-Descreva a **versão mais simples que já seria jogável**, com as interações e regras essenciais. Evite planejar funcionalidades demais.
-
-**Escopo mínimo:**
-
-> Escreva aqui.
+Uma versão jogável com tela inicial, personagem NEX, **três fases curtas**, perguntas de múltipla escolha, pontuação, três vidas, explicações sobre as respostas e tela de vitória ou derrota. As perguntas incluirão situações práticas de uso responsável da IA.
 
 ## 14. Possíveis melhorias, caso haja tempo
 
-Liste até três funcionalidades extras para implementar somente depois que a versão mínima estiver funcionando. Exemplos: sons, fases, ranking, animações ou menu inicial.
+1. Efeitos sonoros e pequenas animações do personagem.
+2. Sistema de dicas para ajudar em perguntas difíceis.
+3. Salvamento do recorde de pontuação em arquivo.
 
-- Melhoria 1:
-- Melhoria 2:
-- Melhoria 3:
+## 15. Organização inicial do projeto
+
+O desenvolvimento utilizará o **template oficial da disciplina**, mantendo sua estrutura de pastas. O arquivo `main.py` iniciará o jogo; os arquivos de `src/` organizarão as telas, a lógica e os dados; `assets/` armazenará imagens e sons; e `tests/` conterá testes simples das funções de lógica. Serão utilizados conceitos como condicionais, laços, listas, dicionários, funções e arquivos.
+
+## 16. Recursos e originalidade
+
+O jogo será desenvolvido pelo grupo em **Python e Pygame**, a partir do template fornecido pela disciplina. A história de NEX, as perguntas, as regras e a adaptação visual serão elaboradas para este projeto. Não será necessário implementar uma IA real. Recursos externos eventualmente utilizados serão identificados no `README.md`, com suas fontes.
