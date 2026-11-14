@@ -1,24 +1,24 @@
-NEX Quest — A Missão da Inteligência Artificial
+# NEX Quest — A Missão da Inteligência Artificial
 
 Projeto final da disciplina de Introdução a Algoritmos/Programação, desenvolvido com Python e Pygame.
 
-Integrantes do grupo
+## Integrantes do grupo
 
 - Yago Teixeira Almeida Nascimento
 - Heitor Dornelas Anacleto
 - Cauã Guilherme
 - Miguel Hayser Gonçalves do Sacramento
 
-Estrutura do projeto
+## Estrutura do projeto
 
-- "main.py": ponto de entrada da aplicação.
-- "src/": código-fonte principal do jogo (loop, regras, sprites e dados).
-- "assets/": imagens, fontes e sons.
-- "data/": arquivos persistentes (recorde/ranking).
-- "tests/": testes unitários com "pytest".
-- "docs/": documentação do projeto, incluindo proposta inicial.
+- `main.py`: ponto de entrada da aplicação.
+- `src/`: código-fonte principal do jogo (loop, regras, sprites e dados).
+- `assets/`: imagens, fontes e sons.
+- `data/`: arquivos persistentes (recorde/ranking).
+- `tests/`: testes unitários com `pytest`.
+- `docs/`: documentação do projeto, incluindo proposta inicial.
 
-Descrição do jogo
+## Descrição do jogo
 
 NEX Quest é um quiz educativo com elementos de aventura, desenvolvido em Python com Pygame.
 
@@ -26,11 +26,11 @@ O jogador deverá ajudar NEX, um pequeno robô que perdeu parte de suas memória
 
 O jogo aborda aplicações da IA no cotidiano e seu uso responsável, incluindo confiabilidade das informações, privacidade e verificação de conteúdos.
 
-Objetivo do jogador
+## Objetivo do jogador
 
 Recuperar as memórias de NEX, respondendo corretamente às perguntas e concluindo as três fases do jogo sem perder todas as vidas.
 
-Regras do jogo
+## Regras do jogo
 
 - O jogador começa com três vidas.
 - Cada pergunta apresenta quatro alternativas, sendo apenas uma correta.
@@ -39,21 +39,27 @@ Regras do jogo
 - Acertos consecutivos geram um bônus de pontuação.
 - Após cada resposta, o jogo apresenta uma explicação educativa.
 
-Controles
+## Controles
 
 - Mouse: selecionar alternativas e interagir com os botões.
 - Botões da interface: iniciar, continuar e jogar novamente.
 
-Como executar o projeto
+## Como executar o projeto
 
+### 1. Clonar o repositório
+
+```bash
 git clone LINK_DO_REPOSITORIO
 cd NOME_DA_PASTA
 pip install -r requirements.txt
 python main.py
 
-Como executar os testes
+## Como executar os testes
 
+```bash
 python -m pytest
+```
+
 
 Checklist mínimo para entrega
 
