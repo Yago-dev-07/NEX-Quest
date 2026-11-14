@@ -9,7 +9,7 @@
 - Yago Teixeira Almeida Nascimento
 - Heitor Dornelas Anacleto
 - Cauã Guilherme
-- Miguel Hayser
+- Miguel Hayser Gonçalves do Sacramento
 
 ## 3. Tema escolhido
 
