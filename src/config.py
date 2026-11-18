@@ -11,7 +11,6 @@ PRETO = (0, 0, 0)
 CINZA = (212,212,212)
 
 # Identidade visual
-
 COR_FUNDO = (16, 24, 47)
 COR_FUNDO_SECUNDARIO = (38, 53, 82)
 COR_PRIMARIA = (94, 234, 212)
