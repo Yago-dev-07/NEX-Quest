@@ -7,7 +7,9 @@ from src.config import (
     COR_FUNDO_SECUNDARIO,
     COR_PRIMARIA, 
     COR_SECUNDARIA,
-    COR_TEXTO_SECUNDARIO
+    COR_TEXTO_SECUNDARIO,
+    COR_ACERTO,
+    COR_ERRO
 )
 
 from src.botoes import desenhar_botao
@@ -117,3 +119,111 @@ def desenhar_tela_instrucoes(tela):
     botao_voltar = desenhar_botao(tela, "Voltar", x_botao, 510, largura_botao, altura_botao, fonte_botao)
 
     return {"voltar": botao_voltar}
+
+def desenhar_texto_posicao(tela, texto, fonte, cor, x, y):
+    """Desenha um texto centralizado nas coordenadas informadas."""
+    
+    texto_renderizado = fonte.render(texto, True, cor)
+
+    posicao_texto = texto_renderizado.get_rect(center=(x, y))
+    
+    tela.blit(texto_renderizado, posicao_texto)
+
+def desenhar_tela_vitoria(tela, pontuacao, vidas):
+    """Desenha a tela de vitória e retorna seus botões."""
+
+    tela.fill(COR_FUNDO)
+
+    # Configuração das fontes
+    fonte_titulo = pygame.font.SysFont("arial", 46, bold=True)
+    fonte_texto = pygame.font.SysFont("arial", 22)
+    fonte_resultado = pygame.font.SysFont("arial", 38, bold=True)
+    fonte_botao = pygame.font.SysFont("arial", 24, bold=True)
+
+    # Mensagem de vitória
+    desenhar_texto_centralizado(tela, "MISSÃO CONCLUÍDA!", fonte_titulo, COR_PRIMARIA, 65)
+
+    desenhar_texto_centralizado(tela, "Parabéns! Você recuperou as memórias de NEX.", fonte_texto, COR_SECUNDARIA, 120)
+
+    # Painel de resultados
+    painel = pygame.Rect(100, 170, LARGURA_TELA - 200, 150)
+
+    pygame.draw.rect(tela, COR_FUNDO_SECUNDARIO, painel, border_radius=15)
+
+    # Pontuação final
+    desenhar_texto_posicao(tela, "Pontuação final", fonte_texto, COR_TEXTO_SECUNDARIO, 250, 210)
+
+    desenhar_texto_posicao(tela, str(pontuacao), fonte_resultado, COR_PRIMARIA, 250, 270)
+
+    # Vidas restantes
+    desenhar_texto_posicao(tela, "Vidas restantes", fonte_texto, COR_TEXTO_SECUNDARIO, 550, 210)
+
+    desenhar_texto_posicao(tela, str(vidas), fonte_resultado, COR_ACERTO, 550, 270)
+
+    # Dimensões dos botões
+    largura_botao = 260
+    altura_botao = 55
+
+    x_botao = (LARGURA_TELA - largura_botao) // 2
+
+    # Botões
+    botao_reiniciar = desenhar_botao(tela, "Jogar novamente", x_botao, 350, largura_botao, altura_botao, fonte_botao)
+
+    botao_menu = desenhar_botao(tela, "Menu inicial", x_botao, 425, largura_botao, altura_botao, fonte_botao)
+
+    botao_sair = desenhar_botao(tela, "Sair", x_botao, 500, largura_botao, altura_botao, fonte_botao)
+
+    return {
+        "reiniciar": botao_reiniciar,
+        "menu": botao_menu,
+        "sair": botao_sair
+    }
+def desenhar_tela_derrota(tela, pontuacao):
+    """Desenha a tela de derrota e retorna seus botões."""
+
+    tela.fill(COR_FUNDO)
+
+    # Configuração das fontes
+    fonte_titulo = pygame.font.SysFont("arial", 46, bold=True)
+    fonte_texto = pygame.font.SysFont("arial", 22)
+    fonte_resultado = pygame.font.SysFont("arial", 38, bold=True)
+    fonte_botao = pygame.font.SysFont("arial", 24, bold=True)
+
+    # Mensagem de derrota
+    desenhar_texto_centralizado(tela, "MISSÃO INTERROMPIDA!", fonte_titulo, COR_ERRO, 65)
+
+    desenhar_texto_centralizado(tela, "NEX ainda precisa da sua ajuda. Tente novamente!", fonte_texto, COR_SECUNDARIA, 120)
+
+    # Painel de resultados
+    painel = pygame.Rect(100, 170, LARGURA_TELA - 200, 150)
+
+    pygame.draw.rect(tela, COR_FUNDO_SECUNDARIO, painel, border_radius=15)
+    
+    # Pontuação final
+    desenhar_texto_posicao(tela, "Pontuação final", fonte_texto, COR_TEXTO_SECUNDARIO, 250, 210)
+
+    desenhar_texto_posicao(tela, str(pontuacao), fonte_resultado, COR_PRIMARIA, 250, 270)
+
+    # Vidas restantes
+    desenhar_texto_posicao(tela, "Vidas restantes", fonte_texto, COR_TEXTO_SECUNDARIO, 550, 210)
+
+    desenhar_texto_posicao(tela, "0", fonte_resultado, COR_ERRO, 550, 270)
+
+    # Dimensões dos botões
+    largura_botao = 260
+    altura_botao = 55
+
+    x_botao = (LARGURA_TELA - largura_botao) // 2
+
+    # Botões
+    botao_reiniciar = desenhar_botao(tela, "Tentar novamente", x_botao, 350, largura_botao, altura_botao, fonte_botao)
+
+    botao_menu = desenhar_botao(tela, "Menu inicial", x_botao, 425, largura_botao, altura_botao, fonte_botao)
+
+    botao_sair = desenhar_botao(tela, "Sair", x_botao, 500, largura_botao, altura_botao, fonte_botao)
+
+    return {
+        "reiniciar": botao_reiniciar,
+        "menu": botao_menu,
+        "sair": botao_sair
+    }
