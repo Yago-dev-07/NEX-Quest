@@ -4,6 +4,7 @@ from src.config import (
     LARGURA_TELA,
     ALTURA_TELA,
     COR_FUNDO,
+    COR_FUNDO_SECUNDARIO,
     COR_PRIMARIA, 
     COR_SECUNDARIA,
     COR_TEXTO_SECUNDARIO
@@ -19,6 +20,12 @@ def desenhar_texto_centralizado(tela, texto, fonte, cor, y):
     posicao_texto = texto_renderizado.get_rect(center=(LARGURA_TELA // 2, y))
 
     tela.blit(texto_renderizado, posicao_texto)
+
+def desenhar_texto(tela, texto, fonte, cor, x, y):
+    """Desenha um texto em uma posição específica."""
+    texto_renderizado = fonte.render(texto, True, cor)
+
+    tela.blit(texto_renderizado, (x, y))
 
 def desenhar_tela_inicial(tela):
     """Desenha a tela inicial e retora seus botões."""
@@ -59,3 +66,54 @@ def desenhar_tela_inicial(tela):
         "instrucoes": botao_instrucoes,
         "sair": botao_sair
     }
+
+def desenhar_tela_instrucoes(tela):
+    """Desenha a tela de instruções e retorna o botão de voltar."""
+
+    tela.fill(COR_FUNDO)
+
+    # Configuração das fontes
+    fonte_titulo = pygame.font.SysFont("arial", 42, bold=True)
+    fonte_subtitulo = pygame.font.SysFont("arial", 24)
+    fonte_texto = pygame.font.SysFont("arial", 20)
+    fonte_botao = pygame.font.SysFont("arial", 24, bold=True)
+
+    # Título e subtítulo
+    desenhar_texto_centralizado(tela, "COMO JOGAR", fonte_titulo, COR_PRIMARIA, 50)
+
+    desenhar_texto_centralizado(tela, "Conheça as regras da sua missão!", fonte_subtitulo, COR_SECUNDARIA, 100)
+
+    # Painel de instruções
+    painel = pygame.Rect(60, 140, LARGURA_TELA - 120, 340)
+
+    pygame.draw.rect(tela, COR_FUNDO_SECUNDARIO, painel, border_radius=15)
+
+    # Lista de instruções
+    instrucoes = [
+        "Ajude NEX a recuperar suas memórias.",
+        "Responda perguntas sobre inteligência artificial.",
+        "Complete as três fases do jogo.",
+        "Você começa com 3 vidas.",
+        "Cada acerto vale 100 pontos.",
+        "Cadas erro faz você perder uma vida.",
+        "3 acertos consecutivos valem 50 pontos extras.",
+        "Utilize o mouse para selecionar as alternativas."
+    ]
+
+    # Exibição das instruções
+    y = 165
+
+    for instrucao in instrucoes:
+        desenhar_texto(tela, instrucao, fonte_texto, COR_TEXTO_SECUNDARIO, 85, y)
+
+        y += 38
+    
+    # Botão de voltar
+    largura_botao = 260
+    altura_botao = 55
+
+    x_botao = (LARGURA_TELA - largura_botao) // 2
+
+    botao_voltar = desenhar_botao(tela, "Voltar", x_botao, 510, largura_botao, altura_botao, fonte_botao)
+
+    return {"voltar": botao_voltar}
