@@ -1,0 +1,182 @@
+[
+    {
+        "fase": 1,
+        "pergunta": "Como uma IA pode aprender a identificar mensagens de spam?",
+        "alternativas": [
+            "Armazenando apenas os endereços dos remetentes",
+            "Analisando exemplos de mensagens classificadas anteriormente",
+            "Bloqueando automaticamente mensagens com textos longos",
+            "Utilizando uma lista fixa de todas as mensagens indesejadas"
+        ],
+        "correta": 1,
+        "explicacao": "No aprendizado de máquina, modelos podem aprender padrões a partir de exemplos classificados e utilizar esse conhecimento para identificar novas mensagens."
+    },
+    {
+        "fase": 1,
+        "pergunta": "Uma IA reconhece um objeto em uma fotografia. Qual tecnologia permite essa análise?",
+        "alternativas": [
+            "Processamento de linguagem natural",
+            "Sistemas de recomendação",
+            "Visão computacional",
+            "Armazenamento em nuvem"
+        ],
+        "correta": 2,
+        "explicacao": "A visão computacional permite que sistemas analisem imagens e identifiquem objetos, pessoas e características visuais."
+    },
+    {
+        "fase": 1,
+        "pergunta": "Por que dois usuários recebem recomendações diferentes em uma plataforma?",
+        "alternativas": [
+            "Porque o sistema considera padrões de comportamento e interesses individuais",
+            "Porque cada usuário recebe conteúdos em uma ordem aleatória",
+            "Porque os desenvolvedores escolhem manualmente as recomendações",
+            "Porque a plataforma apresenta somente conteúdos populares"
+        ],
+        "correta": 0,
+        "explicacao": "Sistemas de recomendação analisam interações e preferências para estimar quais conteúdos podem interessar a cada usuário."
+    },
+    {
+        "fase": 1,
+        "pergunta": "Como aplicativos de navegação utilizam IA para evitar congestionamentos?",
+        "alternativas": [
+            "Repetindo sempre as rotas mais utilizadas",
+            "Considerando apenas a distância entre os locais",
+            "Utilizando exclusivamente os limites de velocidade",
+            "Analisando dados de trânsito para estimar condições das rotas"
+        ],
+        "correta": 3,
+        "explicacao": "Sistemas de navegação podem analisar informações atuais e históricas do trânsito para estimar congestionamentos e sugerir rotas alternativas."
+    },
+    {
+        "fase": 1,
+        "pergunta": "Um assistente virtual transforma sua fala em texto. Qual é sua principal tarefa?",
+        "alternativas": [
+            "Identificar emoções e intenções com certeza",
+            "Reconhecer padrões sonoros e convertê-los em palavras",
+            "Traduzir automaticamente qualquer idioma",
+            "Reproduzir gravações semelhantes à voz do usuário"
+        ],
+        "correta": 1,
+        "explicacao": "O reconhecimento automático de fala analisa sinais sonoros para identificar palavras e transformá-las em texto."
+    },
+    {
+        "fase": 2,
+        "pergunta": "Uma IA sugere um tratamento com base em sintomas informados pelo paciente. Qual é o principal risco?",
+        "alternativas": [
+            "O sistema utilizar informações médicas durante o processamento",
+            "O tratamento exigir acompanhamento em alguns casos",
+            "A recomendação estar incorreta e levar a uma decisão prejudicial",
+            "O paciente precisar informar seus sintomas detalhadamente"
+        ],
+        "correta": 2,
+        "explicacao": "Uma recomendação incorreta pode atrasar o diagnóstico ou provocar danos. Decisões sobre tratamentos devem envolver profissionais de saúde."
+    },
+    {
+        "fase": 2,
+        "pergunta": "Uma IA identifica sinais de câncer em exames, mas não detecta todos os casos. Como deve ser utilizada?",
+        "alternativas": [
+            "Como apoio ao profissional, considerando seus possíveis erros",
+            "Como substituta dos exames realizados por especialistas",
+            "Como decisão definitiva quando apresenta alta precisão",
+            "Como ferramenta exclusiva para pacientes sem diagnóstico"
+        ],
+        "correta": 0,
+        "explicacao": "Mesmo modelos com bons resultados podem apresentar falsos positivos e falsos negativos. A avaliação médica continua necessária para interpretar os resultados."
+    },
+    {
+        "fase": 2,
+        "pergunta": "Uma IA gera uma explicação com uma lei e um artigo que não existem. O que ocorreu?",
+        "alternativas": [
+            "Uma falha exclusiva de conexão com a internet",
+            "Um erro causado necessariamente por dados desatualizados",
+            "Uma interpretação correta de uma fonte desconhecida",
+            "Uma alucinação, com geração de informação aparentemente convincente"
+        ],
+        "correta": 3,
+        "explicacao": "Modelos generativos podem produzir informações falsas com aparência de verdade, inclusive referências inexistentes. Por isso, as fontes precisam ser verificadas."
+    },
+    {
+        "fase": 2,
+        "pergunta": "Uma empresa utiliza IA para responder reclamações sem revisão humana. Qual é um risco dessa decisão?",
+        "alternativas": [
+            "A redução da quantidade de mensagens recebidas",
+            "A divulgação de respostas incorretas como se fossem oficiais",
+            "A impossibilidade de automatizar tarefas repetitivas",
+            "A necessidade de armazenar todas as conversas publicamente"
+        ],
+        "correta": 1,
+        "explicacao": "Sem supervisão adequada, respostas incorretas ou inadequadas podem ser apresentadas como oficiais, prejudicando clientes e decisões da empresa."
+    },
+    {
+        "fase": 2,
+        "pergunta": "Uma IA aprende com históricos de contratação que favoreciam determinado grupo. O que pode acontecer?",
+        "alternativas": [
+            "O sistema eliminar automaticamente os preconceitos históricos",
+            "O modelo deixar de utilizar informações dos candidatos",
+            "A IA reproduzir padrões discriminatórios presentes nos dados",
+            "O treinamento garantir decisões imparciais em novas seleções"
+        ],
+        "correta": 2,
+        "explicacao": "Dados históricos podem refletir desigualdades sociais. Ao aprender esses padrões, a IA pode reproduzir ou até reforçar a discriminação."
+    },
+    {
+        "fase": 3,
+        "pergunta": "Uma pessoa envia documentos pessoais a uma IA gratuita. Qual cuidado é mais importante?",
+        "alternativas": [
+            "Verificar como os dados são armazenados e utilizados",
+            "Enviar os documentos somente em formato PDF",
+            "Apagar a conversa imediatamente após receber a resposta",
+            "Evitar apenas informações que contenham fotografias"
+        ],
+        "correta": 0,
+        "explicacao": "É importante conhecer as políticas de privacidade da ferramenta e verificar se os dados podem ser armazenados ou utilizados posteriormente."
+    },
+    {
+        "fase": 3,
+        "pergunta": "Uma ferramenta de IA solicita acesso à localização, câmera e contatos. Qual atitude é mais responsável?",
+        "alternativas": [
+            "Autorizar todas as permissões para melhorar as respostas",
+            "Negar qualquer permissão, independentemente da finalidade",
+            "Compartilhar os dados se a ferramenta tiver muitos usuários",
+            "Conceder somente os acessos necessários à função utilizada"
+        ],
+        "correta": 3,
+        "explicacao": "O princípio da minimização de dados recomenda fornecer apenas as informações necessárias para a finalidade do serviço."
+    },
+    {
+        "fase": 3,
+        "pergunta": "Por que inserir informações confidenciais em uma IA desconhecida pode ser perigoso?",
+        "alternativas": [
+            "Porque a ferramenta necessariamente publica todas as conversas",
+            "Porque não há garantia de como essas informações serão protegidas e utilizadas",
+            "Porque dados pessoais impedem o funcionamento dos modelos",
+            "Porque qualquer informação enviada se torna automaticamente pública"
+        ],
+        "correta": 1,
+        "explicacao": "As práticas de armazenamento, proteção e utilização de dados variam entre ferramentas. Informações confidenciais exigem cuidado antes do compartilhamento."
+    },
+    {
+        "fase": 3,
+        "pergunta": "Uma IA prevê que um cliente pode cometer fraude em uma compra. O que deve ser considerado antes de bloquear a operação?",
+        "alternativas": [
+            "A previsão deve ser aceita quando o modelo tiver sido treinado com muitos dados",
+            "O bloqueio deve ocorrer sempre que houver uma pontuação elevada",
+            "A previsão pode conter erros e precisa de critérios e revisão adequados",
+            "O histórico do cliente deve ser desconsiderado em qualquer situação"
+        ],
+        "correta": 2,
+        "explicacao": "Modelos de detecção de fraude podem gerar falsos positivos. Decisões que prejudicam usuários precisam considerar evidências, critérios transparentes e mecanismos de contestação."
+    },
+    {
+        "fase": 3,
+        "pergunta": "Durante o treinamento, uma IA recebe milhares de exemplos, mas quase todos representam a mesma situação. Qual é o risco?",
+        "alternativas": [
+            "O modelo aprender padrões limitados e apresentar dificuldades em situações diferentes",
+            "O modelo se tornar automaticamente mais preciso em qualquer cenário",
+            "O sistema deixar de precisar de novos exemplos",
+            "O treinamento garantir resultados imparciais e generalizados"
+        ],
+        "correta": 0,
+        "explicacao": "A quantidade de exemplos não garante diversidade. Dados pouco representativos podem limitar o aprendizado e prejudicar o desempenho diante de situações diferentes."
+    }
+]
