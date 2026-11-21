@@ -1,5 +1,7 @@
 import pygame
 
+from src.quiz import TelaQuiz
+
 from src.config import (
     LARGURA_TELA,
     ALTURA_TELA,
@@ -141,6 +143,7 @@ def criar_jogo():
         "recorde": carregar_recorde(CAMINHO_RECORDE),
         "novo_recorde": False,
         "nex": criar_nex(130),
+        "quiz": None,
         "botoes": {},        # botões da tela atual (preenchido ao desenhar)
     }
     mudar_estado(jogo, "menu")
@@ -162,6 +165,7 @@ def mudar_estado(jogo, novo_estado):
 def iniciar_partida(jogo):
     """Começa uma partida nova e vai para o quiz."""
     jogo["partida"] = criar_partida()
+    jogo["quiz"] = None
     jogo["novo_recorde"] = False
     mudar_estado(jogo, "quiz")
 
@@ -210,85 +214,38 @@ def desenhar_resultado(tela, jogo, fontes):
     nex_posicionar(jogo["nex"], 135, 575)
     desenhar_nex(tela, jogo["nex"], fontes["balao"])
 
+def criar_interface_quiz(tela, jogo):
+    """Conecta a interface do Miguel à lógica da partida."""
 
-# --- Quiz PROVISÓRIO -------------------------------------------------------
-# Serve só para o jogo funcionar de ponta a ponta enquanto a interface do
-# Miguel (src/interface.py / src/quiz.py) não chega. Quando ela estiver
-# pronta, basta trocar o conteúdo de desenhar_quiz() por uma chamada a ela.
-X_QUIZ = 230
-LARGURA_QUIZ = 550
+    partida = jogo["partida"]
 
+    # A interface utiliza 'pontuacao'; a lógica utiliza 'pontos'.
+    partida["pontuacao"] = partida["pontos"]
+
+    def responder(estado, pergunta, escolha):
+        # Sincroniza o índice da pergunta atual.
+        partida["indice"] = jogo["quiz"].indice
+
+        # Utiliza a lógica oficial de pontuação, vidas e combo.
+        acertou = registrar_resposta(partida, escolha)
+
+        # Atualiza o valor utilizado pelo Miguel.
+        estado["pontuacao"] = partida["pontos"]
+
+        # Atualiza a fala do personagem NEX.
+        nex_falar(jogo["nex"], "acerto" if acertou else "erro")
+
+        return acertou
+    
+    jogo["quiz"] = TelaQuiz(tela, partida["perguntas"], partida, responder)
 
 def desenhar_quiz(tela, jogo, fontes):
-    partida = jogo["partida"]
-    pergunta = pergunta_atual(partida)
-    respondeu = partida["resposta"] is not None
-    posicao_mouse = pygame.mouse.get_pos()
+    """Desenha a interface do quiz."""
 
-    tela.fill(COR_FUNDO)
+    if jogo["quiz"] is None:
+        criar_interface_quiz(tela, jogo)
 
-    # Cabeçalho: fase, pergunta, pontos e vidas
-    cabecalho = (
-        f"Fase {partida['fase']}/{TOTAL_FASES}  ·  "
-        f"Pergunta {partida['indice'] + 1}/{len(partida['perguntas'])}"
-    )
-    desenhar_texto(tela, cabecalho, fontes["pequena"], COR_SECUNDARIA, X_QUIZ, 18)
-    desenhar_texto(
-        tela,
-        f"Pontos: {partida['pontos']}   Vidas: {partida['vidas']}   Recorde: {jogo['recorde']}",
-        fontes["pequena"], COR_TEXTO_SECUNDARIO, X_QUIZ, 42,
-    )
-
-    # Enunciado
-    y = 80
-    for linha in quebrar_texto(pergunta["pergunta"], fontes["pergunta"], LARGURA_QUIZ):
-        desenhar_texto(tela, linha, fontes["pergunta"], COR_PRIMARIA, X_QUIZ, y)
-        y += 30
-
-    # Alternativas (clicáveis até o jogador responder)
-    retangulos = []
-    for i, alternativa in enumerate(pergunta["alternativas"]):
-        retangulo = pygame.Rect(X_QUIZ, 185 + i * 64, LARGURA_QUIZ, 56)
-        retangulos.append(retangulo)
-
-        cor_fundo = COR_FUNDO_SECUNDARIO
-        cor_texto = COR_TEXTO
-
-        if respondeu:
-            if i == pergunta["correta"]:
-                cor_fundo, cor_texto = COR_ACERTO, COR_FUNDO
-            elif i == partida["resposta"]:
-                cor_fundo, cor_texto = COR_ERRO, COR_FUNDO
-        elif retangulo.collidepoint(posicao_mouse):
-            cor_fundo, cor_texto = COR_SECUNDARIA, COR_FUNDO
-
-        pygame.draw.rect(tela, cor_fundo, retangulo, border_radius=10)
-
-        linhas = quebrar_texto(f"{'ABCD'[i]}) {alternativa}", fontes["pequena"], LARGURA_QUIZ - 24)
-        altura_linha = fontes["pequena"].get_linesize()
-        y_linha = retangulo.centery - (len(linhas) * altura_linha) // 2
-        for linha in linhas:
-            desenhar_texto(tela, linha, fontes["pequena"], cor_texto, retangulo.x + 12, y_linha)
-            y_linha += altura_linha
-
-    botoes = {"alternativas": retangulos}
-
-    # Depois de responder: explicação + botão de continuar
-    if respondeu:
-        y = 440
-        for linha in quebrar_texto(pergunta["explicacao"], fontes["pequena"], LARGURA_QUIZ):
-            desenhar_texto(tela, linha, fontes["pequena"], COR_TEXTO_SECUNDARIO, X_QUIZ, y)
-            y += fontes["pequena"].get_linesize()
-
-        botoes["continuar"] = desenhar_botao(
-            tela, "Continuar", X_QUIZ + LARGURA_QUIZ - 220, 535, 220, 50, fontes["botao"]
-        )
-
-    jogo["botoes"] = botoes
-
-    nex_posicionar(jogo["nex"], 110, 585)
-    desenhar_nex(tela, jogo["nex"], fontes["balao"])
-
+    jogo["quiz"].desenhar()
 
 # ---------------------------------------------------------------------------
 # Tratamento de eventos (cliques) de cada tela
@@ -318,28 +275,47 @@ def tratar_instrucoes(jogo, evento):
 
 
 def tratar_quiz(jogo, evento):
-    partida = jogo["partida"]
-    botoes = jogo["botoes"]
+    """Processa os eventos da interface definitiva."""
 
-    if partida["resposta"] is None:
-        # Ainda não respondeu: procura qual alternativa foi clicada
-        for i, retangulo in enumerate(botoes["alternativas"]):
-            if verificar_clique(evento, retangulo):
-                acertou = registrar_resposta(partida, i)
-                nex_falar(jogo["nex"], "acerto" if acertou else "erro")
-                return True
+    quiz = jogo["quiz"]
 
-    elif verificar_clique(evento, botoes["continuar"]):
+    if quiz is None:
+        return False
+
+    # Guarda o estado anterior para detectar alterações.
+    indice_anterior = quiz.indice
+    modo_anterior = quiz.modo
+
+    # A interface do Miguel processa o clique.
+    quiz.tratar_evento(evento)
+
+    # Verifica se a fase terminou.
+    if quiz.terminou:
+        partida = jogo["partida"]
+
+        # A lógica oficial decide se haverá outra fase,
+        # vitória ou derrota.
+        partida["indice"] = len(partida["perguntas"]) - 1
+
         proximo = avancar_partida(partida)
 
         if proximo == "quiz":
+            # Uma nova fase será carregada no próximo desenho.
+            jogo["quiz"] = None
             nex_calar(jogo["nex"])
+
         else:
             finalizar_partida(jogo)
             mudar_estado(jogo, proximo)
+
         return True
 
-    return False
+    # Descarta os eventos restantes quando uma resposta
+    # ou mudança de pergunta ocorrer.
+    return (
+        quiz.indice != indice_anterior
+        or quiz.modo != modo_anterior
+    )
 
 
 def tratar_resultado(jogo, evento):
