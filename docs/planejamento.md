@@ -1,4 +1,3 @@
-
 # Planejamento do Projeto — NEX Quest
 
 ## 1. Identificação do projeto

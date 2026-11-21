@@ -1,4 +1,3 @@
-
 # NEX Quest — A Missão da Inteligência Artificial
 
 Projeto final da disciplina de **Introdução a Algoritmos**, desenvolvido em Python com a biblioteca Pygame.
