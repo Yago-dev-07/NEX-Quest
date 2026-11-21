@@ -1,38 +1,59 @@
-
-import os
-
-
-def salvar_recorde(caminho_arquivo, pontuacao):
-    """Salva a pontuação recorde em arquivo texto."""
-    # Garante que a pasta (ex.: data/) exista antes de gravar
-    pasta = os.path.dirname(caminho_arquivo)
-    if pasta != "":
-        os.makedirs(pasta, exist_ok=True)
-
-    with open(caminho_arquivo, "w", encoding="utf-8") as arquivo:
-        arquivo.write(str(pontuacao))
+from src.dados import (
+    salvar_recorde,
+    carregar_recorde,
+    atualizar_recorde
+)
 
 
-def carregar_recorde(caminho_arquivo):
-    """Carrega o recorde salvo; retorna 0 se não existir valor válido."""
-    try:
-        with open(caminho_arquivo, "r", encoding="utf-8") as arquivo:
-            conteudo = arquivo.read().strip()
+def test_salvar_recorde(tmp_path):
+    """Verifica se o recorde é salvo corretamente."""
 
-            if conteudo == "":
-                return 0
+    caminho = tmp_path / "recorde.txt"
 
-            return int(conteudo)
+    salvar_recorde(caminho, 500)
 
-    except (FileNotFoundError, ValueError):
-        # Arquivo ausente ou com texto que não é número: começa do zero
-        return 0
+    assert carregar_recorde(caminho) == 500
 
 
-def atualizar_recorde(caminho_arquivo, pontuacao):
-    """Salva a pontuação só se ela superar o recorde. Retorna True se superou."""
-    if pontuacao > carregar_recorde(caminho_arquivo):
-        salvar_recorde(caminho_arquivo, pontuacao)
-        return True
+def test_carregar_recorde_inexistente(tmp_path):
+    """Verifica o retorno quando o arquivo não existe."""
 
-    return False
+    caminho = tmp_path / "recorde.txt"
+
+    assert carregar_recorde(caminho) == 0
+
+
+def test_atualizar_recorde_maior(tmp_path):
+    """Verifica se uma pontuação maior atualiza o recorde."""
+
+    caminho = tmp_path / "recorde.txt"
+
+    salvar_recorde(caminho, 300)
+
+    resultado = atualizar_recorde(caminho, 600)
+
+    assert resultado is True
+    assert carregar_recorde(caminho) == 600
+
+
+def test_atualizar_recorde_menor(tmp_path):
+    """Verifica se uma pontuação menor mantém o recorde."""
+
+    caminho = tmp_path / "recorde.txt"
+
+    salvar_recorde(caminho, 800)
+
+    resultado = atualizar_recorde(caminho, 400)
+
+    assert resultado is False
+    assert carregar_recorde(caminho) == 800
+
+
+def test_carregar_recorde_invalido(tmp_path):
+    """Verifica o comportamento com conteúdo inválido."""
+
+    caminho = tmp_path / "recorde.txt"
+
+    caminho.write_text("pontuacao invalida", encoding="utf-8")
+
+    assert carregar_recorde(caminho) == 0
