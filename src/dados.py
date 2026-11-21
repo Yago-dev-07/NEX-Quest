@@ -1,5 +1,13 @@
+import os
+
+
 def salvar_recorde(caminho_arquivo, pontuacao):
     """Salva a pontuação recorde em arquivo texto."""
+    # Garante que a pasta (ex.: data/) exista antes de gravar
+    pasta = os.path.dirname(caminho_arquivo)
+    if pasta != "":
+        os.makedirs(pasta, exist_ok=True)
+
     with open(caminho_arquivo, "w", encoding="utf-8") as arquivo:
         arquivo.write(str(pontuacao))
 
@@ -15,5 +23,15 @@ def carregar_recorde(caminho_arquivo):
 
             return int(conteudo)
 
-    except FileNotFoundError:
+    except (FileNotFoundError, ValueError):
+        # Arquivo ausente ou com texto que não é número: começa do zero
         return 0
+
+
+def atualizar_recorde(caminho_arquivo, pontuacao):
+    """Salva a pontuação só se ela superar o recorde. Retorna True se superou."""
+    if pontuacao > carregar_recorde(caminho_arquivo):
+        salvar_recorde(caminho_arquivo, pontuacao)
+        return True
+
+    return False
