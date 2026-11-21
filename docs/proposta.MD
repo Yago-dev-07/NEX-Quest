@@ -10,6 +10,7 @@
 - Heitor Dornelas Anacleto
 - Cauã Guilherme
 - Miguel Hayser Gonçalves do Sacramento
+- Pedro Teodoro Goulart Santana
 
 ## 3. Tema escolhido
 
